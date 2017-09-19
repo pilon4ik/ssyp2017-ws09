@@ -116,9 +116,10 @@ public class Legacy {
             checkBoxes.get(i).drawButton(graphics);
             HashMap<String, String> kek = getPathAndName(allAlgInfos.get(i).getPath());
             if (kek.get("name").length() > 15)
-                Font.makeLine(kek.get("name").substring(0, 13).toUpperCase() + "--", 600, generalHeight + 210 + i * 68);
+                Font.makeLine(kek.get("name").substring(0, 13).toUpperCase() + "...", 600, generalHeight + 210 + i * 68);
             else
                 Font.makeLine(kek.get("name").toUpperCase(), 600, generalHeight + 210 + i * 68);
+            Font.makeLine("HIGHSCORE: " + allAlgInfos.get(i).getHighScore(), 600, generalHeight + 240 + i * 68);
             ImageLoader.getGrayBike().draw(480, generalHeight + 220 + i * 68, 2.2f);
             for (AlgInfo item : isParticipate) {
                 if (item.getId() == allAlgInfos.get(i).getId()) {

@@ -119,9 +119,12 @@ public class Game {
     }
 
 
+
+
+
     public void update(GameContainer gameContainer) {
-        Camera.moveCam(gameContainer);
-        if (winners.isEmpty()) {
+        if(winners.isEmpty()) {
+            Camera.moveCam(gameContainer);
             for (int i = 0; i < algorithms.size(); i++) {
                 if (!bikes.get(i).isDead()) {
                     try {
@@ -159,31 +162,32 @@ public class Game {
                         bikes.get(i).respawn(gameContainer);
                     }
                 }
+
             }
-        }
-        if (System.currentTimeMillis() - roundTimer >= roundTimeSecs * 1000 && gameEndTimer == -1) {
-            int maxScore = 0;
-            for (Bike bike : bikes) {
-                if (bike.score >= maxScore || winners.isEmpty()) {
-                    if (bike.score > maxScore) {
-                        winners.clear();
+            if (System.currentTimeMillis() - roundTimer >= roundTimeSecs * 1000 && gameEndTimer == -1) {
+                int maxScore = 0;
+                for (Bike bike : bikes) {
+                    if (bike.score >= maxScore || winners.isEmpty()) {
+                        if (bike.score > maxScore) {
+                            winners.clear();
+                        }
+                        maxScore = bike.score;
+                        winners.add(bike);
                     }
-                    maxScore = bike.score;
-                    winners.add(bike);
                 }
-            }
-            StringBuilder winnerIndexes = new StringBuilder();
+                StringBuilder winnerIndexes = new StringBuilder();
 
-            for (int i = 0; i < winners.size(); i++) {
-                String algoName = window.legacy.getPathAndName(Serialize.readFile("algorithmsInNewGame.txt").get(bikes.get(winners.get(i).getIndex()).getIndex()).getPath()).get("name");
-                winnerIndexes.append(algoName.toUpperCase());
-                if (i != winners.size() - 1) {
-                    winnerIndexes.append(", ");
+                for (int i = 0; i < winners.size(); i++) {
+                    String algoName = window.legacy.getPathAndName(Serialize.readFile("algorithmsInNewGame.txt").get(bikes.get(winners.get(i).getIndex()).getIndex()).getPath()).get("name");
+                    winnerIndexes.append(algoName.toUpperCase());
+                    if (i != winners.size() - 1) {
+                        winnerIndexes.append(", ");
+                    }
                 }
-            }
-            winnerNames = winnerIndexes.toString();
-            gameEndTimer = System.currentTimeMillis();
+                winnerNames = winnerIndexes.toString();
+                gameEndTimer = System.currentTimeMillis();
 
+            }
         }
         if ((System.currentTimeMillis() - gameEndTimer > 3000 && gameEndTimer != -1)
                 || (System.currentTimeMillis() - crashTimer > 3000 && crashTimer != -1)
@@ -233,7 +237,7 @@ public class Game {
                 for (Bike bike : bikes) {
                     String algoName = window.legacy.getPathAndName(Serialize.readFile("algorithmsInNewGame.txt").get(bike.getIndex()).getPath()).get("name");
                     if (algoName.length() > 10) {
-                        algoName = algoName.substring(0, 9) + ",,,";
+                        algoName = algoName.substring(0, 9) + "...";
                     }
                     output = algoName.toUpperCase() + " SCORE: " + bike.score;
                     Font.makeLine(output,

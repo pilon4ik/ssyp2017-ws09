@@ -171,6 +171,10 @@ public class Font {
                     ImageLoader.getComma().draw(xPos + width, yPos, scale);
                     width += ImageLoader.getComma().getWidth() * scale;
                     break;
+                case ".":
+                    ImageLoader.getDot().draw(xPos + width, yPos, scale);
+                    width += ImageLoader.getDot().getWidth() * scale;
+                    break;
                 default:
                     width += 15;
 

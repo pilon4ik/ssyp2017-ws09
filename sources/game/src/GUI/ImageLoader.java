@@ -11,7 +11,7 @@ public class ImageLoader {
             n0, n1, n2, n3, n4, n5, n6, n7, n8, n9, gameGround, hash,
             explosion1, explosion2, explosion3, explosion4, explosion5,
             yellowBike, redBike, blueBike, greenBike, line, doublePoint,
-            save, save2, load, load2, del, del2, comma, textPlace, grayBike, spawn, spawn2;
+            dot, save, save2, load, load2, del, del2, comma, textPlace, grayBike, spawn, spawn2;
 
 
     public static void loadImage() {
@@ -141,6 +141,11 @@ public class ImageLoader {
         }
         try {
             doublePoint = new Image("res\\Alphabet\\double.png");
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+        try {
+            dot = new Image("res\\Alphabet\\dot.png");
         } catch (SlickException e) {
             e.printStackTrace();
         }
@@ -663,6 +668,10 @@ public class ImageLoader {
 
     public static Image getDoublePoint() {
         return doublePoint;
+    }
+
+    public static Image getDot() {
+        return dot;
     }
 
     public static Image getDel() {

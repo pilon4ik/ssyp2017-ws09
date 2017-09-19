@@ -1,4 +1,0 @@
-id<0>gloalId<0>path<C:\Users\DNS\Desktop\TRON\algo\KekDriver>totalScore<2>highScore<2>
-id<1>gloalId<1>path<C:\Users\DNS\Desktop\TRON\algo\BetsonAlgo>totalScore<1>highScore<16>
-id<2>gloalId<2>path<C:\Users\DNS\ws09_2\ws09\out\production\ws09\slowPok>totalScore<-16>highScore<0>
-id<3>gloalId<3>path<C:\Users\DNS\ws09_2\ws09\out\production\ws09\ArtyomAnalDestroyer>totalScore<7>highScore<7>

@@ -112,7 +112,7 @@ public class Bike {
         imageRight = ImageLoader.getBike(index);
         vector = new Vector2f(0, 0);
         this.gc = gc;
-        velocity = 1;
+        velocity = 20;
         direction = 0;
         vector.y = -1;
         switch (index) {
@@ -260,7 +260,7 @@ public class Bike {
 
     void respawn(GameContainer gc) {
         vector = new Vector2f(0, 0);
-        velocity = 1;
+        velocity = 10;
         position = new Point(defaultPos.getX(), defaultPos.getY());
         direction = 0;
         vector.y = -1;
@@ -270,6 +270,7 @@ public class Bike {
             map.walls.remove(collidedWall);
         }
         trace = null;
+        prevTickTime = System.currentTimeMillis();
     }
 
     void move() {
@@ -423,7 +424,7 @@ public class Bike {
         }
         String algoName = window.legacy.getPathAndName(Serialize.readFile("algorithmsInNewGame.txt").get(index).getPath()).get("name");
         if (algoName.length() > 10) {
-            algoName = algoName.substring(0, 9) + ",,,";
+            algoName = algoName.substring(0, 9) + "...";
         }
         String output = algoName + " SCORE: " + score;
         GUI.Font.makeLine(output.toUpperCase(), gc.getWidth() - 300, index * 30 + 25);
